@@ -4,7 +4,7 @@ export const config: Config = {
   settings: {
     title: 'Wesites Status',
     url: 'https://wesites.dominioweb.workers.dev',
-    displayDays: 90,
+    displayDays: 10,
     collectResponseTimes: true,
   },
   monitors: [
