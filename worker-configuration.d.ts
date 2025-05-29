@@ -2,5 +2,5 @@
 // by running `wrangler types`
 
 interface Env {
-  KV_STORE: KVNamespace
+  KV_STORE_DOMINIOWEB: KVNamespace
 }
