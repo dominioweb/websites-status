@@ -9,34 +9,15 @@ export const config: Config = {
   },
   monitors: [
     {
-      id: 'workers.cloudflare.com',
-      url: 'https://workers.cloudflare.com',
+      id: 'www.dominioweb.com.mx',
+      url: 'https://www.dominioweb.com.mx',
       description: 'You write code. They handle the rest.',
       followRedirect: false,
     },
     {
-      id: 'www.cloudflare.com',
-      url: 'https://www.cloudflare.com',
+      id: 'react.dominioweb.com.mx',
+      url: 'https://react.dominioweb.com.mx',
       description: 'Built for anything connected to the Internet.',
-    },
-    {
-      id: 'blog.cloudflare.com',
-      url: 'https://blog.cloudflare.com',
-      name: 'The Cloudflare Blog',
-    },
-    {
-      id: 'google',
-      url: 'https://www.google.com/',
-      name: 'Google',
-      followRedirect: true,
-    },
-    {
-      id: 'bilibili',
-      url: 'https://www.bilibili.com/',
-    },
-    {
-      id: 'GitHub',
-      url: 'https://github.com/',
     },
   ],
   monitorsCsvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSnewwW9OuXgtuutyYSfFJ_AZdI-UpkUjP2wWi-zZWM3MKa8IzBceWCe9qB_-Lmk-S7mSFgqKVnokam/pub?gid=0&single=true&output=csv',
