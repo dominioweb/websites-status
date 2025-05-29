@@ -1,11 +1,11 @@
 account_id = "adb055aaf8325420af12ab37aef224ab"
-name = "websites"
+name = "websites-dominioweb"
 main = "./src/worker/index.ts"
 #compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2025-05-22"
 workers_dev = true
 # npx --no -- wrangler kv:namespace create cf-worker-status-page-pro
-kv_namespaces = [ { binding = "KV_STORE", id = "ca9f61f6d68d4798979fed2dc8977759" } ]
+kv_namespaces = [ { binding = "KV_STORE_DOMINIOWEB", id = "49f0836687ec4539a7a7f5eeea67c2a2" } ]
 
 [site]
 bucket = "./dist/client"
@@ -14,7 +14,7 @@ bucket = "./dist/client"
 port = 3000
 
 [env.production]
-kv_namespaces = [ { binding = "KV_STORE", id = "ca9f61f6d68d4798979fed2dc8977759" } ]
+kv_namespaces = [ { binding = "KV_STORE_DOMINIOWEB_PROD", id = "c9486588b13c486793dcffeaef40a368" } ]
 
 [env.production.triggers]
 crons = [
