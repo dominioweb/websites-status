@@ -67,20 +67,20 @@ export interface DataV1 {
 export async function upsertRemoteMonitors(env: Env, value: Monitor[] | null) {
   ensureWorkerEnv()
   if (value === null) {
-    await env.KV_STORE.delete(REMOTE_MONITORS_KEY)
+    await env.KV_STORE_DOMINIOWEB.delete(REMOTE_MONITORS_KEY)
     return
   }
-  await env.KV_STORE.put(REMOTE_MONITORS_KEY, JSON.stringify(value))
+  await env.KV_STORE_DOMINIOWEB.put(REMOTE_MONITORS_KEY, JSON.stringify(value))
 }
 
 export async function upsertData(env: Env, value: DataV1 | null, allMonitors: Monitor[]) {
   ensureWorkerEnv()
   if (value === null) {
-    await env.KV_STORE.delete(DATA_KEY)
+    await env.KV_STORE_DOMINIOWEB.delete(DATA_KEY)
     return
   }
   const cleanedValue = await cleanDataV1(value, allMonitors)
-  await env.KV_STORE.put(DATA_KEY, JSON.stringify(cleanedValue))
+  await env.KV_STORE_DOMINIOWEB.put(DATA_KEY, JSON.stringify(cleanedValue))
 }
 
 export async function cleanDataV1(value: DataV1, allMonitors: Monitor[]) {
@@ -124,7 +124,7 @@ export async function cleanDataV1(value: DataV1, allMonitors: Monitor[]) {
 async function getStore(env: Env) {
   ensureWorkerEnv()
   // https://developers.cloudflare.com/kv/api/read-key-value-pairs/
-  let kvData = await env.KV_STORE.get<DataV1>(DATA_KEY, 'json')
+  let kvData = await env.KV_STORE_DOMINIOWEB.get<DataV1>(DATA_KEY, 'json')
   if (!kvData) {
     kvData = {}
   }
@@ -133,7 +133,7 @@ async function getStore(env: Env) {
 
 export async function getAllMonitors(env: Env, useRemoteMonitors = true) {
   if (useRemoteMonitors) {
-    const remoteMonitors = await env.KV_STORE.get<Monitor[]>(REMOTE_MONITORS_KEY, 'json')
+    const remoteMonitors = await env.KV_STORE_DOMINIOWEB.get<Monitor[]>(REMOTE_MONITORS_KEY, 'json')
     return [...config.monitors, ...(remoteMonitors || [])]
   }
   return config.monitors
